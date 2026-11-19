@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuestionario de Detección de Necesidades de Software - Microempresa</title>
+  <style>
+    :root {
+      --primary-color: #2b6cb0;
+      --text-color: #2d3748;
+      --bg-color: #f7fafc;
+      --card-bg: #ffffff;
+      --border-color: #e2e8f0;
+      --accent-color: #3182ce;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text-color);
+      background-color: var(--bg-color);
+      line-height: 1.5;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border-color);
+    }
+
+    header {
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 22px;
+      color: var(--primary-color);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: #718096;
+      margin-top: 4px;
+    }
+
+    .section {
+      margin-bottom: 25px;
+    }
+
+    .section-title {
+      font-size: 16px;
+      color: var(--primary-color);
+      background-color: #ebf8ff;
+      padding: 8px 12px;
+      border-left: 4px solid var(--primary-color);
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    .field-group {
+      margin-bottom: 12px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .text-input {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid #cbd5e0;
+      border-radius: 4px;
+      font-size: 14px;
+      background-color: #fff;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .checkbox-group, .radio-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 5px;
+    }
+
+    .option {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 14px;
+    }
+
+    .option input {
+      margin-top: 3px;
+    }
+
+    .hint {
+      font-size: 12px;
+      color: #718096;
+      font-style: italic;
+      margin-bottom: 8px;
+    }
+
+    .actions {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: bold;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: #2b6cb0;
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background-color: #fff;
+        padding: 0;
+      }
+
+      .container {
+        box-shadow: none;
+        border: none;
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .actions {
+        display: none;
+      }
+
+      .text-input {
+        border: none;
+        border-bottom: 1px solid #a0aec0;
+        border-radius: 0;
+        padding: 2px 0;
+      }
+
+      .section-title {
+        background-color: #f7fafc;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div>
+        <h1>Detección de Necesidades de Software</h1>
+        <div class="subtitle">Diagnóstico Inicial de Gestión Empresarial (Microempresa)</div>
+      </div>
+    </header>
+
+    <form id="quizForm">
+      <!-- Sección 1 -->
+      <div class="section">
+        <div class="section-title">1. Datos Generales de la Empresa</div>
+        <div class="grid-2">
+          <div class="field-group">
+            <label>Nombre del negocio:</label>
+            <input type="text" class="text-input" placeholder="Ej. Abarrotes San José">
+          </div>
+          <div class="field-group">
+            <label>Giro / Actividad principal:</label>
+            <input type="text" class="text-input" placeholder="Ej. Papelería, Taller, Cafetería">
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="field-group">
+            <label>N° de personas que usarán el sistema:</label>
+            <input type="number" class="text-input" min="1" placeholder="Ej. 2">
+          </div>
+          <div class="field-group">
+            <label>Modalidad de venta:</label>
+            <div class="radio-group">
+              <label class="option"><input type="radio" name="modalidad" value="local"> Solo local físico</label>
+              <label class="option"><input type="radio" name="modalidad" value="online"> Solo venta en línea / Envíos</label>
+              <label class="option"><input type="radio" name="modalidad" value="mixto"> Local + Ventas en línea / WhatsApp</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección 2 -->
+      <div class="section">
+        <div class="section-title">2. Situación Actual y Puntos de Dolor</div>
+        <div class="field-group">
+          <label>¿Cómo llevan el control del negocio actualmente?</label>
+          <div class="checkbox-group">
+            <label class="option"><input type="checkbox" name="actual" value="cuaderno"> Cuaderno / Libreta de notas</label>
+            <label class="option"><input type="checkbox" name="actual" value="excel"> Hojas de cálculo (Excel, Google Sheets)</label>
+            <label class="option"><input type="checkbox" name="actual" value="memoria"> De memoria / Revisión al momento</label>
+            <label class="option"><input type="checkbox" name="actual" value="app"> Software / App básica existente</label>
+          </div>
+        </div>
+        <div class="field-group" style="margin-top: 15px;">
+          <label>¿Cuáles son sus principales problemas diarios? (Seleccione máximo 3):</label>
+          <div class="checkbox-group">
+            <label class="option"><input type="checkbox" name="dolor" value="inventario"> No saber exactamente cuánto producto queda en inventario.</label>
+            <label class="option"><input type="checkbox" name="dolor" value="credito"> Olvidar cobrar deudas o "fiados" a clientes.</label>
+            <label class="option"><input type="checkbox" name="dolor" value="cobro"> Lentitud o descontrol al momento de cobrar/vender.</label>
+            <label class="option"><input type="checkbox" name="dolor" value="ganancias"> No saber cuánto se ganó libre al final del día/mes.</label>
+            <label class="option"><input type="checkbox" name="dolor" value="caja"> Descontrol con los gastos de la caja chica.</label>
+            <label class="option"><input type="checkbox" name="dolor" value="faltantes"> Faltantes no explicados de dinero o mercancía.</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección 3 -->
+      <div class="section">
+        <div class="section-title">3. Módulos Esenciales Requeridos</div>
+        
+        <label style="margin-bottom: 8px;">A. Ventas y Atención al Cliente</label>
+        <div class="checkbox-group" style="margin-bottom: 15px;">
+          <label class="option"><input type="checkbox" name="mod_ventas" value="pos"> Punto de venta rápido (cobro diario)</label>
+          <label class="option"><input type="checkbox" name="mod_ventas" value="fiado"> Ventas a crédito / "Fiado" (registro de clientes y abonos)</label>
+          <label class="option"><input type="checkbox" name="mod_ventas" value="ticket"> Generación de tickets (Impresos o por WhatsApp/Email)</label>
+          <label class="option"><input type="checkbox" name="mod_ventas" value="cotizaciones"> Cotizaciones y presupuestos rápidos</label>
+        </div>
+
+        <label style="margin-bottom: 8px;">B. Inventario y Compras</label>
+        <div class="checkbox-group" style="margin-bottom: 15px;">
+          <label class="option"><input type="checkbox" name="mod_inv" value="catalogo"> Catálogo con fotos, precios y categorías</label>
+          <label class="option"><input type="checkbox" name="mod_inv" value="stock"> Descuento automático de stock con cada venta</label>
+          <label class="option"><input type="checkbox" name="mod_inv" value="alerta"> Alertas automáticas de stock bajo</label>
+          <label class="option"><input type="checkbox" name="mod_inv" value="proveedores"> Registro de proveedores y facturas de compra</label>
+        </div>
+
+        <label style="margin-bottom: 8px;">C. Caja y Finanzas</label>
+        <div class="checkbox-group">
+          <label class="option"><input type="checkbox" name="mod_caja" value="arqueo"> Apertura y cierre de caja diario (Arqueos)</label>
+          <label class="option"><input type="checkbox" name="mod_caja" value="gastos"> Registro rápido de gastos y salidas de dinero</label>
+          <label class="option"><input type="checkbox" name="mod_caja" value="pagos"> Aceptar múltiples formas de pago (Efectivo, Tarjeta, Transferencia)</label>
+        </div>
+      </div>
+
+      <!-- Sección 4 -->
+      <div class="section">
+        <div class="section-title">4. Reportes para el Dueño</div>
+        <div class="checkbox-group">
+          <label class="option"><input type="checkbox" name="reportes" value="ganancia"> Ganancia neta (diaria / semanal / mensual)</label>
+          <label class="option"><input type="checkbox" name="reportes" value="top_productos"> Productos más vendidos / rotación de inventario</label>
+          <label class="option"><input type="checkbox" name="reportes" value="cuentas"> Balance de cuentas por cobrar (fiados) y por pagar</label>
+          <label class="option"><input type="checkbox" name="reportes" value="turnos"> Historial de ventas por vendedor o turno</label>
+        </div>
+      </div>
+
+      <!-- Sección 5 -->
+      <div class="section">
+        <div class="section-title">5. Entorno Técnico y Dispositivos</div>
+        <div class="grid-2">
+          <div class="field-group">
+            <label>Dispositivo principal:</label>
+            <div class="checkbox-group">
+              <label class="option"><input type="checkbox" name="dev" value="pc"> Computadora / Laptop</label>
+              <label class="option"><input type="checkbox" name="dev" value="mobile"> Celular (Android / iOS)</label>
+              <label class="option"><input type="checkbox" name="dev" value="tablet"> Tablet</label>
+            </div>
+          </div>
+          <div class="field-group">
+            <label>Accesorios disponibles / requeridos:</label>
+            <div class="checkbox-group">
+              <label class="option"><input type="checkbox" name="acc" value="ticket_printer"> Impresora térmica de tickets</label>
+              <label class="option"><input type="checkbox" name="acc" value="barcode"> Lector de código de barras</label>
+              <label class="option"><input type="checkbox" name="acc" value="none"> Ninguno por ahora</label>
+            </div>
+          </div>
+        </div>
+        <div class="field-group" style="margin-top: 15px;">
+          <label>Conexión a Internet en el local:</label>
+          <div class="radio-group">
+            <label class="option"><input type="radio" name="internet" value="estable"> Estable / Constante</label>
+            <label class="option"><input type="radio" name="internet" value="inestable"> Inestable / Falla seguido (Requiere modo Offline)</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección 6 -->
+      <div class="section">
+        <div class="section-title">6. Expectativas de Proyecto</div>
+        <div class="grid-2">
+          <div class="field-group">
+            <label>Tiempo estimado de implementación:</label>
+            <input type="text" class="text-input" placeholder="Ej. En 2 semanas / Lo antes posible">
+          </div>
+          <div class="field-group">
+            <label>Preferencia de modelo económico:</label>
+            <div class="radio-group">
+              <label class="option"><input type="radio" name="modelo" value="unico"> Pago único por desarrollo</label>
+              <label class="option"><input type="radio" name="modelo" value="suscripcion"> Suscripción mensual / anual económica</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn btn-primary" onclick="window.print()">Imprimir / Guardar como PDF</button>
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>
